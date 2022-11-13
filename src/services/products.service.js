@@ -1,7 +1,7 @@
 const products = require('../models/products');
 const validateServices = require('./validations/validations.services');
 
-const findAll = async () => {
+const findAllService = async () => {
   const allProducts = await products.findAll();
   return { type: null, message: allProducts };
 };
@@ -16,6 +16,6 @@ const findById = async (passengerId) => {
 };
 
 module.exports = {
-  findAll,
+  findAllService,
   findById,
 };
