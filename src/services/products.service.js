@@ -18,7 +18,7 @@ const findById = async (passengerId) => {
 const createProduct = async (name) => {
   const error = validateServices.validadeName(name);
   if (error.type) return error;
-  
+
   const insert = await products.insert({ name });
   const newTable = await products.findById(insert);
   return { type: null, message: newTable };

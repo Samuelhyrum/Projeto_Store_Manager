@@ -13,6 +13,11 @@ const productsMock = [
   }
 ]
 
+const newProduct = {
+  "name": "Varinha das Varinhas"
+}
+
 module.exports = {
   productsMock,
+  newProduct,
 }

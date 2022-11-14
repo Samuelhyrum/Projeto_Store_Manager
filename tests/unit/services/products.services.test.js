@@ -3,8 +3,9 @@ const sinon = require('sinon')
 
 const productsModel = require('../../../src/models/products');
 const productsService = require('../../../src/services/products.service')
+const validateService = require('../../../src/services/validations/validations.services')
 
-const { productsMock, hammer } = require('./mocks/products.mock.service');
+const { productsMock, hammer,newProduct, Product } = require('./mocks/products.mock.service');
 
 describe('Verificando o Service de Produtos ', function () {
   describe('listagem de produtos ', function () {
@@ -30,6 +31,33 @@ describe('Verificando o Service de Produtos ', function () {
       const result = await productsService.findById('aa');
 
       expect(result.message).to.deep.equal('"id" must be a number');
+    });
+    it('retorna erro ao passar ID invalido', async function () {
+      sinon.stub(productsModel, 'findById').resolves();
+
+      const result = await productsService.findById(6);
+
+      expect(result.message).to.deep.equal('Product not found');
+    });
+  });
+  describe('cadastro de produtos ', function () {
+    beforeEach(sinon.restore);
+    it('Cadastrando um novo produto', async function () {
+      
+      sinon.stub(productsModel, 'insert').resolves([{ insertId: 4 }]);
+      sinon.stub(productsModel, 'findById').resolves(newProduct);
+      sinon.stub(validateService, 'validadeName').resolves();
+  
+      const result = await productsService.createProduct(Product)
+      expect(result.type).to.equal(null);
+      expect(result.message).to.deep.equal(newProduct);
+    });
+       
+    it('Erro ao cadastrar um novo produto com nome errado', async function () {
+      const result = await productsService.createProduct('erro')
+    
+      expect(result.type).to.equal('INVALID_NAME');
+      expect(result.message).to.deep.equal('"name" length must be at least 5 characters long');
     });
   });
 });

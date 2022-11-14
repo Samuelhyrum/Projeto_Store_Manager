@@ -17,7 +17,12 @@ const hammer = {
   "id": 1,
   "name": "Martelo de Thor"
 };
+const newProduct = {
+  "id": 4,
+  "name": "Varinha das Varinhas"
+};
+
 
 module.exports = {
-  productsMock, hammer,
+  productsMock, hammer, newProduct
 }

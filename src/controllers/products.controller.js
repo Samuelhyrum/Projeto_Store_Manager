@@ -1,6 +1,5 @@
 const productService = require('../services/products.service');
 const errorMap = require('../utils/erroMap');
-// const errorMap = require('../utils/erroMap');
 
 const listProducts = async (_req, res) => {
   const { message } = await productService.findAllService();
