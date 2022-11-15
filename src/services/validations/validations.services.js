@@ -16,7 +16,20 @@ const validadeName = (name) => {
   }; 
 }
 };
+
+const validateQuantity = (quantity) => {
+  const { error } = schemas.saleQuantity.validate(quantity);
+  if (error) {
+    return {
+      type: 'INVALID_QUANTITY',
+      message: '"quantity" must be greater than or equal to 1',
+    };
+  }
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
   validadeName,
+  validateQuantity,
 };
