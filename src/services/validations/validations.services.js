@@ -1,4 +1,5 @@
 const schemas = require('./schemas');
+const validateSales = require('../../models/sales.model');
 
 const validateId = (id) => {
   const { error } = schemas.idSchema.validate(id);
@@ -17,6 +18,15 @@ const validadeName = (name) => {
 }
 };
 
+const validateIdSale = async (id) => {
+  const { error } = schemas.idSchema.validate(id);
+  if (error) return { type: 'INVALID_VALUE', message: '"id" must be a number' };
+  
+  const productsById = await validateSales.findById(id);
+  if (productsById) return { type: null, message: '' };
+  return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+};
+
 const validateQuantity = (quantity) => {
   const { error } = schemas.saleQuantity.validate(quantity);
   if (error) {
@@ -32,4 +42,5 @@ module.exports = {
   validateId,
   validadeName,
   validateQuantity,
+  validateIdSale,
 };
