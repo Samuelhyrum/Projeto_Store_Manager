@@ -49,8 +49,9 @@ describe('Verificando o Service de Produtos ', function () {
       sinon.stub(validateService, 'validadeName').resolves();
   
       const result = await productsService.createProduct(Product)
-      expect(result.type).to.equal(null);
-      expect(result.message).to.deep.equal(newProduct);
+
+      expect(result).to.deep.equal({ type: null, message: newProduct });
+
     });
        
     it('Erro ao cadastrar um novo produto com nome errado', async function () {

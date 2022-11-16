@@ -14,8 +14,9 @@ const validadeName = (name) => {
  return {
     type: 'INVALID_NAME',
     message: '"name" length must be at least 5 characters long',
-  }; 
-}
+    }; 
+  } 
+  return { type: null, message: '' };
 };
 
 const validateIdSale = async (id) => {
