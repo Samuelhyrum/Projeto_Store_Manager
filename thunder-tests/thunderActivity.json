@@ -55,12 +55,12 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-11-15T13:26:00.318Z",
-    "modified": "2022-11-16T00:14:47.049Z",
+    "modified": "2022-11-17T15:09:56.882Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "[\n  {\n    \"productId\": 4,\n    \"quantity\": 1\n  }\n]",
+      "raw": "[\n  {\n    \"productId\": 1\n  }\n]",
       "form": []
     },
     "tests": []

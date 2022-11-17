@@ -13,5 +13,4 @@ const createSale = async (req, res) => {
 
 module.exports = {
   createSale,
-  // findById,
 };
