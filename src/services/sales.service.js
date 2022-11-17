@@ -22,6 +22,22 @@ const createSale = async (data) => {
   return { type: null, message: salesResult };
 };
 
+const findAllSales = async () => {
+  const allSales = await sales.findAllSales();
+  return { type: null, message: allSales };
+};
+
+const findByIdSale = async (passengerId) => {
+  const error = validateSales.validateId(passengerId);
+  if (error.type) return error;
+
+  const salesById = await sales.findByIdSale(passengerId);
+  if (salesById.length !== 0) return { type: null, message: salesById };
+  return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
+};
+
 module.exports = {
   createSale,
+  findAllSales,
+  findByIdSale,
 }; 

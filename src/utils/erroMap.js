@@ -3,7 +3,7 @@ const errorMap = {
   INVALID_VALUE: 404,
   PRODUCT_NOT_FOUND: 404,
   INVALID_QUANTITY: 422,
-  // TRAVEL_CONFLICT: 409,
+  SALE_NOT_FOUND: 404,
 };
 
 const mapError = (type) => errorMap[type] || 500;
