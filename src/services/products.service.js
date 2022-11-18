@@ -6,11 +6,11 @@ const findAllService = async () => {
   return { type: null, message: allProducts };
 };
 
-const findById = async (passengerId) => {
-  const error = validateServices.validateId(passengerId);
+const findById = async (productsID) => {
+  const error = validateServices.validateId(productsID);
   if (error.type) return error;
 
-  const productsById = await products.findById(passengerId);
+  const productsById = await products.findById(productsID);
   if (productsById) return { type: null, message: productsById };
   return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 };
@@ -33,9 +33,23 @@ const updateProduct = async (name, id) => {
   if (newProduct) return { type: null, message: newProduct };
   return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 };
+
+const deleteProduct = async (productsID) => {
+  const error = validateServices.validateId(productsID);
+  if (error.type) return error;
+
+  const productsById = await products.findById(productsID);
+  if (!productsById) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  const result = await products.deleteProduct(productsID);
+  return {
+    type: null, message: result,
+  };
+};
+
 module.exports = {
   findAllService,
   findById,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
