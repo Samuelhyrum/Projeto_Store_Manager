@@ -25,7 +25,10 @@ const newProduct = {
   "id": 4,
   "name": "Varinha"
 }
-
+const newUptProduct = {
+  "id": 2,
+  "name": "Cajado"
+}
 const newSale = [
   {
     "productId": 1,
@@ -107,5 +110,5 @@ module.exports = {
   newProduct, Product, newSale,
   saleFinal, newSaleInvalid,
   newSaleQuantityErr, salesMock,
-  saleById
+  saleById, newUptProduct
 }

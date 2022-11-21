@@ -12,6 +12,12 @@ const productsMock = [
     "name": "Escudo do Capitão América"
   }
 ]
+const productsUpdateMock = [
+  {
+    "id": 3,
+    "name": "Escudo do Capitão América"
+  }
+]
 
 const newProduct = {
   "name": "Varinha das Varinhas"
@@ -62,5 +68,6 @@ module.exports = {
   newProduct,
   newSale,
   salesMock,
-  saleById
+  saleById,
+  productsUpdateMock
 }

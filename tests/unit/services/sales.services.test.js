@@ -9,14 +9,14 @@ const { salesMock } = require('../models/mocks/mockProducts.model');
 const { newSale, saleFinal, newSaleInvalid, newSaleQuantityErr, saleById } = require('./mocks/products.mock.service');
 
 describe('cadastro de produtos ', function () {
-  beforeEach(function () {
-    sinon.stub(salesModel, 'insert').resolves(newSale, 3);
-  })
-  afterEach(function () {
-    sinon.restore();
-  });
+  beforeEach(sinon.restore);
 
   it('Cadastrando uma nova Venda', async function () {
+    sinon.stub(salesModel, 'insertDataSales').resolves(3);
+    sinon.stub(validateService, 'validateIdSale').resolves(true);
+    sinon.stub(salesModel, 'insert').resolves();
+
+    await salesModel.insertDataSales()
 
     const result = await salesService.createSale(newSale)
 

@@ -104,4 +104,45 @@ describe('Verificando o Controller de Produtos ', function () {
 
     afterEach(sinon.restore);
   });
+
+  describe('Controller das funções de deletar e atualizar ', function () {
+    afterEach(sinon.restore);
+
+    it('Retorno da função atualizar o produto ', async function () {
+      const res = {};
+      const req = {
+        params: { id: 2 },
+        body: {
+          "name": "Cajado",
+        }
+      };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(productsService, 'updateProduct')
+        .resolves({ type: null, message: true });
+
+      await productsController.updateProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(200);
+    });
+
+    it('Retorno da função deletar o produto ', async function () {
+      const res = {};
+      const req = {
+        params: { id: 2 },
+      };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(productsService, 'deleteProduct')
+        .resolves({ type: null, message: undefined });
+
+      await productsController.deleteProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(204);
+    });
+  });
 });
