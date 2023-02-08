@@ -12,7 +12,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 -->
 <details>
-  <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary>
+  <summary><strong>👨‍💻 O que foi desenvolvido</strong></summary>
   
 A API construída é um sistema de gerenciamento de vendas no formato dropshipping em que será possível criar, visualizar, deletar e atualizar produtos e vendas. Eu utilizei o banco de dados MySQL para a gestão de dados. Além disso, a API foi RESTful.
 </details>
